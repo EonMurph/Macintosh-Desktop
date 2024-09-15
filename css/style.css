@@ -1,0 +1,222 @@
+/* || Setting Custom Variables */
+:root {
+  --min-main-height: 400px;
+}
+
+* {
+  cursor: url("../cursors/arrow.cur"), default;
+}
+h1,h2,h3,h4,h5,h6, p,em,b,i,strong {
+  cursor: text;
+}
+a, a * {
+  cursor: url("../cursors/hand.cur"), pointer;
+}
+
+/* || Site-Wide Rules */
+@font-face {
+  font-family: "AppleII";
+  src: url("../fonts/apple-iigs.ttf") format("truetype");
+}
+
+body {
+  font-family: "AppleII", monospace;
+  font-size: 13px;
+  letter-spacing: -1px;
+  background: #3a23ff;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 90vh;
+  min-width: 380px;
+  padding: 5%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* || Action Bar */
+nav {
+  background: white;
+  color: black;
+  border: solid 3px black;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+
+  /* ||| Action Bar Items */
+  & * {
+    margin: 0px 5px;
+  }
+
+  & > img {
+    height: 20px;
+  }
+
+  & a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .current-page {
+    color: white;
+    background: black;
+
+    box-sizing: border-box;
+    height: 100%;
+    padding: 5px 2px;
+  }
+}
+
+/* || Main */
+main {
+  padding: 20px;
+  height: 95%;
+  min-height: var(--min-main-height);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* ||| Setting the background for around the app view */
+  --w: 1px; /* thickness of the lines */
+  --n: 100; /* number of lines */
+  --light-color: #c6bcff;
+  --dark-color: #8a7ffe;
+
+  background: linear-gradient(
+    90deg,
+    var(--light-color) calc(100% - var(--w)),
+    var(--dark-color) 0
+  );
+  background-size: calc(
+      (100% - var(--n) * var(--w)) / (var(--n) + 1) + var(--w)
+    )
+    100%;
+
+  /* ||| Application */
+  #app {
+    width: 90%;
+    height: calc(100% - 40px);
+    min-height: 380px;
+
+    & > * {
+      width: 100%;
+      background: white;
+      border: solid 3px black;
+      box-sizing: border-box;
+    }
+
+    /* |||| Application Header */
+    .app-heading {
+      box-sizing: border-box;
+      height: 35px;
+      border-bottom-width: 0px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > h1 {
+        margin: 0px 5px;
+        font-size: 1em;
+        text-align: center;
+      }
+
+      .narrow-lines,
+      .long-lines {
+        height: 25px;
+
+        --w: 2px; /* thickness of the lines */
+        --n: 4; /* number of lines */
+        --light-color: #fff;
+        --dark-color: #000;
+
+        background: linear-gradient(
+          var(--light-color) calc(100% - var(--w)),
+          var(--dark-color) 0
+        );
+        background-size: 100%
+          calc((100% - var(--n) * var(--w)) / (var(--n) + 1) + var(--w));
+      }
+      .long-lines {
+        width: 40%;
+      }
+      .narrow-lines {
+        width: 2%;
+      }
+
+      & > div:last-of-type {
+        background: #f8616e;
+      }
+      .heading-box {
+        border: solid 2px black;
+        height: 15px;
+        width: 18px;
+        margin: 0px 3px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > a {
+          font-weight: bold;
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  /* |||| Application Content */
+  .content {
+    height: calc(100% - 25px);
+    min-height: calc(var(--min-main-height) - 45px);
+    overflow-y: auto;
+
+    /* ||||| Scrollbar */
+    &::-webkit-scrollbar {
+      width: 30px;
+    }
+    &::-webkit-scrollbar-track {
+      border-left: solid 3px black;
+
+      --w: 1px; /* thickness of the lines */
+      --n: 250; /* number of lines */
+      --light-color: #fff;
+      --dark-color: #000;
+
+      background: linear-gradient(
+        var(--light-color) calc(100% - var(--w)),
+        var(--dark-color) 0
+      );
+      background-size: 100%
+        calc((100% - var(--n) * var(--w)) / (var(--n) + 1) + var(--w));
+    }
+    &::-webkit-scrollbar-thumb {
+      min-height: 100px;
+      border: solid 3px black;
+      border-right-width: 0px;
+      background: #fff;
+    }
+    &::-webkit-scrollbar-button {
+      box-sizing: border-box;
+      height: 30px;
+      border-style: solid;
+      border-color: black;
+      border-width: 0px 0px 3px 3px;
+      background-image: url("../images/scrollbar-up-arrow.jpg.jpeg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    &::-webkit-scrollbar-button:end:increment {
+      background-image: url("../images/scrollbar-down-arrow.jpg.jpeg");
+      background-position-x: -2px;
+      border-width: 3px 0px 0px 3px;
+    }
+  }
+}

@@ -1,0 +1,133 @@
+/* || Desktop View */
+main {
+  display: block;
+
+  /* ||| Icons */
+  #icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "intro about"
+      ". credits"
+      ". trash";
+    max-width: 100%;
+    max-height: 100%;
+    float: right;
+
+    &:first-child {
+      grid-area: intro;
+    }
+    #about {
+      grid-area: about;
+    }
+    #credits {
+      grid-area: credits;
+    }
+    #trash {
+      grid-area: trash;
+    }
+  }
+
+  .desktop-icon {
+    text-align: center;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    float: right;
+
+    & a {
+      text-decoration: none;
+    }
+    & p {
+      background: #fff;
+      color: black;
+      display: inline;
+      margin-right: 0px;
+    }
+
+    .icon {
+      background: #a9aba7;
+      border-color: black;
+      border-style: solid;
+      border-width: 2px 1px 2px 3px;
+      height: 17px;
+      width: 50px;
+      margin: 3px auto;
+      position: relative;
+
+      .led {
+        background: #45161f;
+        height: 3px;
+        width: 5px;
+        margin: 3px 6px auto auto;
+        display: block;
+      }
+
+      /* |||| Disk Slot */
+
+      .disk-square {
+        background: black;
+        height: 5px;
+        width: 25%;
+      }
+      .disk-slit {
+        background: black;
+        height: 1.5px;
+        width: 80%;
+      }
+      .disk-square,
+      .disk-slit {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* |||| Trash Can */
+    .trash-can {
+      margin-bottom: 5px;
+
+      & * {
+        background: #fff;
+        border-color: black;
+        border-style: solid;
+        border-width: 2px 2px 0px 2px;
+        margin: 0px auto;
+      }
+
+      .lid-handle {
+        margin: 0px auto;
+        width: 7px;
+        height: 2px;
+      }
+      .lid {
+        height: 2.5px;
+        width: 37px;
+      }
+      .can {
+        height: 35px;
+        width: 33px;
+        margin-bottom: 3px;
+        border-bottom-width: 2px;
+
+        display: flex;
+        justify-content: space-around;
+
+        & * {
+          height: 80%;
+          margin-top: 2px;
+        }
+        .can-stripes {
+          border-width: 0px 2px;
+          width: 3px;
+          margin-left: 3px;
+          margin-right: 3px;
+        }
+        .can-middle-stripe {
+          border-width: 0px 1px;
+        }
+      }
+    }
+  }
+}
